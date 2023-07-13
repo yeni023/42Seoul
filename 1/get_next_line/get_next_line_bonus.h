@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:33:44 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/07/12 14:14:02 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:57:37 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-# define OPEN_FD_MAX 49152
+# define OPEN_FD_MAX 10496
 
 int			lencheck(char const *s, unsigned int start, size_t len);
 
