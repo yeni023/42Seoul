@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:31:29 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/07/20 16:35:35 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:22:22 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static char	*ft_extract_line(char *line)
 	return (res);
 }
 
-//잔디 심어지는지 테스트
 char	*get_next_line(int fd)
 {
 	char		*line;

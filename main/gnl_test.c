@@ -1,3 +1,7 @@
+// 실행할 때  bonus 부분 빼고 컴파일 하기 (중복 코드 오류)
+// 기본 파일 + test.c => test에 있는 txt 파일 명 동일한 지 확인하기
+
+#include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
 
