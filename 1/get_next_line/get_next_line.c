@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:31:29 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/07/20 19:22:22 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/07/24 20:23:23 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-static char	*ft_read_line(int fd, char *buf, char *backup)
+static char	*ft_read_sentence(int fd, char *buf, char *backup)
 {
 	int		cnt;
 	char	*tmp_pointer;
@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	line = ft_read_line(fd, buf, backup);
+	line = ft_read_sentence(fd, buf, backup);
 	free(buf);
 	buf = NULL;
 	if (!line)
