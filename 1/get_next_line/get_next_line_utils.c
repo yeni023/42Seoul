@@ -6,11 +6,11 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:49:30 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/07/12 14:04:23 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/07/28 03:26:52 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*ft_strchr(const char *str, int c)
 {
