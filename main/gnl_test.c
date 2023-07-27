@@ -8,14 +8,21 @@
 int main()
 {
 	char *str;
+	char *str2;
 	int fd = open("test2.txt", O_RDONLY);
+	int fd2 = open("test.txt", O_RDONLY);
 	while (1)
 	{
 		str = get_next_line(fd);
 		if (!str)
 			return (0);
-		printf("%s", str);
         free(str);
+		printf("%s", str);
+		str2 = get_next_line(fd2);
+		if (!str2)
+			return (0);
+		printf("%s", str2);
+        free(str2);
         system("leaks a.out");
 	}
 }
