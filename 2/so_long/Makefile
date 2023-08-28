@@ -10,21 +10,13 @@ MLX = mlx/libmlx.a
 
 RM = rm -rf
 
-# DIR = ./mandatory/
-
-# 제출 전에 바꾸고 내기
-# MANDATORY_NAME = check.c exit.c \
-# 		image_init.c \
-# 		key.c \
-# 		main.c \
-# 		mlx_etc.c \
-# 		move.c
-
 SRCS = ./mandatory/check.c \
 		./mandatory/image_init.c \
 		./mandatory/main.c \
 		./mandatory/move.c \
-		#./mandatory/exit.c ./mandatory/key.c ./mandatory/mlx_etc.c \
+		./mandatory/exit.c \ 
+		./mandatory/key.c \
+		./mandatory/mlx_etc.c
 
 OBJS = $(SRCS:.c=.o)
 
