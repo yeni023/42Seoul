@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 20:18:58 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/08/20 20:27:19 by yeeunpar         ###   ########.fr       */
+/*   Created: 2023/08/28 16:43:18 by yeeunpar          #+#    #+#             */
+/*   Updated: 2023/08/28 16:43:33 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "../mlx/mlx.h"
 
-int	exit_game(t_map *game)
+void	free_all(char **split)
 {
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
+	int	i;
+
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
 }
 
-void	print_error(char *msg)
+int	press_key(int key_code, t_map *map)
 {
-	printf("Error\n%s", msg);
-	exit(1);
+	if (key_code == KEY_ESC)
+		exit_game(map);
+	if (key_code == KEY_W)
+		move_w(map);
+	if (key_code == KEY_A)
+		move_a(map);
+	if (key_code == KEY_S)
+		move_s(map);
+	if (key_code == KEY_D)
+		move_d(map);
+	return (0);
 }
