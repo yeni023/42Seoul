@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 18:09:58 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/08/28 16:46:12 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/08/28 20:26:47 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void obj_init(t_map *map)
 	map->obj = (t_obj *)malloc(sizeof(t_obj));
 	if (!map->obj)
 		return;
-	map->obj->ld = mlx_xpm_file_to_image(map->mlx, "./textures/ld.xpm", &wd, &hg);
+	map->obj->backgroud = mlx_xpm_file_to_image(map->mlx, "./textures/backgroud.xpm", &wd, &hg);
+	map->obj->coin = mlx_xpm_file_to_image(map->mlx, "./textures/coin.xpm", &wd, &hg);
+	map->obj->tree = mlx_xpm_file_to_image(map->mlx, "./textures/tree.xpm", &wd, &hg);
+	map->obj->exit = mlx_xpm_file_to_image(map->mlx, "./textures/exit.xpm", &wd, &hg);
 	map->obj->peng = mlx_xpm_file_to_image(map->mlx, "./textures/peng.xpm", &wd, &hg);
 }

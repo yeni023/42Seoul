@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 LIB = -Llibft -lgnl -Llibgnl -lft -L./mlx -lmlx
 

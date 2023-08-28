@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 20:12:18 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/08/28 16:45:58 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/08/28 20:28:41 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@
 
 typedef struct s_obj
 {
-	void *ld;
+	void *backgroud;
+	void *coin;
 	void *peng;
+	void *tree;
+	void *exit;
 } t_obj;
 
 typedef struct s_map
