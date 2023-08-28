@@ -2,7 +2,7 @@ NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-LIB = -Llibft -lft -Llibgnl -lgnl -L./mlx -lmlx
+LIB = -Llibft -lgnl -Llibgnl -lft -L./mlx -lmlx
 
 INCLUDES = -I./libgnl -I./libft -I./mlx -I./mandatory
 
@@ -14,7 +14,7 @@ SRCS = ./mandatory/check.c \
 		./mandatory/image_init.c \
 		./mandatory/main.c \
 		./mandatory/move.c \
-		./mandatory/exit.c \ 
+		./mandatory/exit.c \
 		./mandatory/key.c \
 		./mandatory/mlx_etc.c
 

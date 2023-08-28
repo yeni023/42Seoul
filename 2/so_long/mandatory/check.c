@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:40:50 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/08/28 16:41:23 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:43:17 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	middle_line_check(char *line, t_map *map)
 
 	size = ft_strlen(line);
 	if (size - 1 != map->width || line[0] != '1' || line[size - 2] != '1')
-		print_error("map error -> not surrounded left or right wall");
+		print_error("map error -> Map must be closed/surrounded by walls");
 	i = 0;
 	while (i < size - 1)
 	{
 		if (!(line[i] == '1' || line[i] == '0' || line[i] == 'C' || \
 			line[i] == 'E' || line[i] == 'P'))
-			print_error("map error -> invalid component");
+			print_error("map error -> invalid component(1, 0, C, E, P)");
 		i++;
 	}
 	line_split = ft_split(line, '\n');
