@@ -5,75 +5,76 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 16:41:53 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/08/28 19:55:49 by yeeunpar         ###   ########.fr       */
+/*   Created: 2023/09/18 20:25:17 by yeeunpar          #+#    #+#             */
+/*   Updated: 2023/09/18 20:52:10 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "../mlx/mlx.h"
 
-int	fd_check(char *argv)
+int	ft_error(char *message)
 {
-	int	fd;
+	ft_putstr_fd("Error\n", 2);
+	perror(message);
+	exit(1);
+	return (0);
+}
 
-	fd = open(argv, O_RDONLY);
+void	parse_map(char *filename, t_map	*info)
+{
+	int		fd;
+	char	*line_map;
+	char	*temp;
+
+	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		print_error("open failed.\n");
-	return (fd);
-}
-
-void	arg_check(char *argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-		i++;
-	if (ft_strncmp(argv + i - 4, ".ber", 4) != 0)
-		print_error("not vaild extension -> <map_name>.ber\n");
-}
-
-void	objs(t_map *map)
-{
-	int	i;
-	int	exits;
-	int	p_start;
-
-	i = 0;
-	exits = 0;
-	p_start = 0;
-	while (map->map_line[i])
+		ft_error("invalid fd!");
+	line_map = ft_strdup("");
+	while (1)
 	{
-		if (map->map_line[i] == 'C')
-			map->all_items++;
-		else if (map->map_line[i] == 'E')
-			exits++;
-		else if (map ->map_line[i] == 'P')
-			p_start++;
-		i++;
+		temp = get_next_line(fd);
+		if (!temp)
+			break ;
+		if (temp[0] == '\n')
+			ft_error("devided map!");
+		line_map = free_join(line_map, temp);
 	}
-	if (map->all_items < 1 || exits < 1 || p_start != 1)
-		print_error("map error -> objets error");
+	info->map = ft_split(line_map, '\n');
+	free(line_map);
+	close(fd);
+}
+
+char	*free_join(char	*s1, char *s2)
+{
+	char	*res;
+
+	res = ft_strjoin(s1, s2);
+	free(s1);
+	free(s2);
+	return (res);
+}
+
+int	valid_map(t_map *info)
+{
+	t_arg	arg;
+
+	ft_memset(&arg, 0, sizeof(arg));
+	surrounded_wall(*info);
+	valid_obj(info->map, &arg, info);
+	rectangle_map(info->map, info->x, info->y);
+	no_other_arg(info->map);
+	return (valid_road((*info), arg, -1, -1));
 }
 
 int	main(int argc, char **argv)
 {
-	t_map	map;
+	t_game	game;
 
 	if (argc != 2)
-		print_error("argument error -> ./so_long <map_name>.ber\n");
-	ft_memset(&map, 0, sizeof(t_map));
-	arg_check(argv[1]);
-	map_init(&map, argv[1]);
-	objs(&map);
-	map.mlx = mlx_init();
-	map.win = mlx_new_window(map.mlx, map.width * 64, \
-	map.height * 64, "so_long");
-	obj_init(&map);
-	setting_img(&map);
-	mlx_hook(map.win, X_EVENT_KEY_RELEASE, 0, &press_key, &map);
-	mlx_hook(map.win, X_EVENT_KEY_EXIT, 0, &exit_game, &map);
-	mlx_loop(map.mlx);
-	return (0);
+		ft_error("no file");
+	game.info = (t_map *)malloc(sizeof(t_map));
+	parse_map(argv[1], game.info);
+	find_x_y(game.info);
+	game.coinnum = valid_map(game.info);
+	start_game(&game);
 }

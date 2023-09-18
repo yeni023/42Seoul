@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 20:12:18 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/08/28 20:28:41 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:21:31 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,63 +35,78 @@
 #define KEY_A 0
 #define KEY_S 1
 #define KEY_D 2
-
-typedef struct s_obj
-{
-	void *backgroud;
-	void *coin;
-	void *peng;
-	void *tree;
-	void *exit;
-} t_obj;
+# define DESTROY_NOTIFY 17
 
 typedef struct s_map
 {
-	int x;
-	int y;
-	int width;
-	int height;
-	int all_items;
-	int c_items;
-	int walk_cnt;
-	char *map_line;
-	void *mlx;
-	void *win;
-	struct s_obj *obj;
-} t_map;
+	int		x;
+	int		y;
+	char	**map;
+	int		p_x;
+	int		p_y;
+}	t_map;
 
-// check.c
-void first_line_check(char *line, t_map *map);
-void middle_line_check(char *line, t_map *map);
-void last_line_check(char *line, t_map *map);
-int map_size_check(int fd, t_map *map);
-void map_init(t_map *map, char *argv);
+typedef struct s_game
+{
+	t_map	*info;
+	void	*mlx;
+	void	*win;
+	int		coinnum;
+	void	*wall;
+	void	*backgroud;
+	void	*point;
+	void	*coin;
+	void	*exit;
+	int		peng_cnt;
+}	t_game;
 
-// exit.c
-int exit_game(t_map *game);
-void print_error(char *msg);
+typedef struct s_arg
+{
+	int	exit;
+	int	food;
+	int	point;
+}	t_arg;
 
-// image_init.c
-void obj_init(t_map *map);
+// key_func.c
+int	exit_game(t_game *game);
+int	key_pressed_w(t_game *game, t_map *info);
+int	key_pressed_s(t_game *game, t_map *info);
+int	key_pressed_a(t_game *game, t_map *info);
+int	key_pressed_d(t_game *game, t_map *info);
 
-// key.c
-void free_all(char **split);
-int press_key(int key_code, t_map *map);
+// make_display.c
+void	alloc_image(t_game	*game);
+void	turn_on_pixel(t_game *game, void *image, int x, int y);
+void	print_map(t_game *game, char **map);
+int		key_pressed(int command, t_game *game);
+void	start_game(t_game *game);
+
+// command_vaildator.c
+int		is_valid_w_key(char **map, t_map *info, t_game *game);
+int		is_valid_s_key(char **map, t_map *info, t_game *game);
+int		is_valid_a_key(char **map, t_map *info, t_game *game);
+int		is_valid_d_key(char **map, t_map *info, t_game *game);
+void	free_all_struct(t_game *game);
+
+// check_path.c
+char	**multifree(char **res);
+char	**multidup(char **s, int x);
+int		dfs(int x, int y, char **map, char find_char);
+void	exit_to_wall(char **s);
+int		valid_road(t_map info, t_arg arg, int x, int y);
+
+// check_map.c
+void	find_x_y(t_map *info);
+void	surrounded_wall(t_map info);
+void	valid_obj(char **map, t_arg *arg, t_map *info);
+void	rectangle_map(char **map, int x, size_t y);
+void	no_other_arg(char **map);
 
 // main.c
-int fd_check(char *argv);
-void arg_check(char *argv);
-void objs(t_map *map);
-int main(int argc, char **argv);
-
-// mlx_etc.c
-void put_img(t_map *map, void *obj, int w, int h);
-void setting_img(t_map *map);
-
-// move.c
-void move_d(t_map *map);
-void move_a(t_map *map);
-void move_w(t_map *map);
-void move_s(t_map *map);
+int		ft_error(char *message);
+void	parse_map(char *filename, t_map	*info);
+char	*free_join(char	*s1, char *s2);
+int		valid_map(t_map *info);
+int		main(int argc, char **argv);
 
 #endif

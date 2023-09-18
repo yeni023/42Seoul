@@ -33,6 +33,7 @@ SRCS_PART1 = \
 			ft_memmove.c \
 			ft_strjoin.c \
 			ft_putchar_fd.c \
+			upgrade_ft_strchr.c \
 			ft_putstr_fd.c
 
 SRCS_PART2 = \

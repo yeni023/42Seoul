@@ -10,13 +10,12 @@ MLX = mlx/libmlx.a
 
 RM = rm -rf
 
-SRCS = ./mandatory/check.c \
-		./mandatory/image_init.c \
+SRCS = ./mandatory/check_map.c \
+		./mandatory/check_path.c \
 		./mandatory/main.c \
-		./mandatory/move.c \
-		./mandatory/exit.c \
-		./mandatory/key.c \
-		./mandatory/mlx_etc.c
+		./mandatory/command_validator.c \
+		./mandatory/key_func.c \
+		./mandatory/make_display.c
 
 OBJS = $(SRCS:.c=.o)
 
