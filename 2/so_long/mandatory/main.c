@@ -6,18 +6,21 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:25:17 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/18 20:52:10 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:57:21 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_error(char *message)
+void	arg_check(char *argv)
 {
-	ft_putstr_fd("Error\n", 2);
-	perror(message);
-	exit(1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		i++;
+	if (ft_strncmp(argv + i - 4, ".ber", 4) != 0)
+		print_error("error, The file extension is .ber\n");
 }
 
 void	parse_map(char *filename, t_map	*info)
@@ -28,7 +31,7 @@ void	parse_map(char *filename, t_map	*info)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid fd!");
+		print_error("error, invalid fd");
 	line_map = ft_strdup("");
 	while (1)
 	{
@@ -36,7 +39,7 @@ void	parse_map(char *filename, t_map	*info)
 		if (!temp)
 			break ;
 		if (temp[0] == '\n')
-			ft_error("devided map!");
+			print_error("error, devided map");
 		line_map = free_join(line_map, temp);
 	}
 	info->map = ft_split(line_map, '\n');
@@ -71,7 +74,8 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		ft_error("no file");
+		print_error("error, The file does not exist");
+	arg_check(argv[1]);
 	game.info = (t_map *)malloc(sizeof(t_map));
 	parse_map(argv[1], game.info);
 	find_x_y(game.info);

@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 21:06:54 by donghyk2          #+#    #+#             */
-/*   Updated: 2023/09/18 21:33:42 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:17:48 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	alloc_image(t_game	*game)
 	"./textures/coin.xpm", &width, &height);
 	game->exit = mlx_xpm_file_to_image(game->mlx, \
 	"./textures/exit.xpm", &width, &height);
-	game->point = mlx_xpm_file_to_image(game->mlx, \
+	game->peng = mlx_xpm_file_to_image(game->mlx, \
 	"./textures/peng.xpm", &width, &height);
 }
 
@@ -57,7 +57,7 @@ void	print_map(t_game *game, char **map)
 			else if (map[i][j] == 'E')
 				turn_on_pixel(game, game->exit, j, i);
 			else if (map[i][j] == 'P')
-				turn_on_pixel(game, game->point, j, i);
+				turn_on_pixel(game, game->peng, j, i);
 		}
 	}
 }

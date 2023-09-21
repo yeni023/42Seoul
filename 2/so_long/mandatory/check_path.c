@@ -6,13 +6,13 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:17:45 by donghyk2          #+#    #+#             */
-/*   Updated: 2023/09/18 20:37:57 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:54:57 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**multifree(char **res)
+char	**allfree(char **res)
 {
 	int	i;
 
@@ -41,23 +41,23 @@ char	**multidup(char **s, int x)
 	return (res);
 }
 
-int	dfs(int x, int y, char **map, char find_char)
+int	check_dfs(int x, int y, char **map, char find_char)
 {
-	int	count;
+	int	cnt;
 
 	if (map[x][y] == '1')
 		return (0);
 	if (map[x][y] != 'V')
 	{
-		count = 0;
+		cnt = 0;
 		if (map[x][y] == find_char)
-			count++;
+			cnt++;
 		map[x][y] = 'V';
-		count += dfs(x - 1, y, map, find_char);
-		count += dfs(x, y + 1, map, find_char);
-		count += dfs(x + 1, y, map, find_char);
-		count += dfs(x, y - 1, map, find_char);
-		return (count);
+		cnt += check_dfs(x - 1, y, map, find_char);
+		cnt += check_dfs(x, y + 1, map, find_char);
+		cnt += check_dfs(x + 1, y, map, find_char);
+		cnt += check_dfs(x, y - 1, map, find_char);
+		return (cnt);
 	}
 	return (0);
 }
@@ -83,29 +83,29 @@ void	exit_to_wall(char **s)
 
 int	valid_road(t_map info, t_arg arg, int x, int y)
 {
-	char	**vis_e;
-	char	**vis_f;
+	char	**visited_exit;
+	char	**visited_food;
 
-	vis_e = multidup(info.map, info.x);
-	vis_f = multidup(info.map, info.x);
-	exit_to_wall(vis_f);
+	visited_exit = multidup(info.map, info.x);
+	visited_food = multidup(info.map, info.x);
+	exit_to_wall(visited_food);
 	while (info.map[++x])
 	{
 		y = upgrade_ft_strchr(info.map[x], 'P');
 		if (y != -1)
 		{
-			if (arg.exit == dfs(x, y, vis_e, 'E')
-				&& arg.food == dfs(x, y, vis_f, 'C'))
+			if (arg.exit == check_dfs(x, y, visited_exit, 'E')
+				&& arg.food == check_dfs(x, y, visited_food, 'C'))
 			{
-				multifree(vis_e);
-				multifree(vis_f);
+				allfree(visited_exit);
+				allfree(visited_food);
 				return (arg.food);
 			}
 			else
 				break ;
 		}
 	}
-	multifree(vis_e);
-	multifree(vis_f);
-	return (ft_error("invalid path!"));
+	allfree(visited_exit);
+	allfree(visited_food);
+	return (print_error_ver2("invalid path!"));
 }

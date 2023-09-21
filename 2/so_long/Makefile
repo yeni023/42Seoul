@@ -13,8 +13,9 @@ RM = rm -rf
 SRCS = ./mandatory/check_map.c \
 		./mandatory/check_path.c \
 		./mandatory/main.c \
-		./mandatory/command_validator.c \
+		./mandatory/moving_key.c \
 		./mandatory/key_func.c \
+		./mandatory/print_errors.c \
 		./mandatory/make_display.c
 
 OBJS = $(SRCS:.c=.o)
