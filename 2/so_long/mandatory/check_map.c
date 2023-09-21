@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:35:25 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/21 17:03:53 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:28:05 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	valid_obj(char **map, t_arg *arg, t_map *info)
 	}
 	if (arg->exit == 1 && arg->food >= 1 && arg->peng == 1)
 		return ;
-	print_error("Error, invalid argument!");
+	print_error("Error, invalid argument(E, P, C)");
 }
 
 void	rectangle_map(char **map, int x, size_t y)
@@ -86,7 +86,7 @@ void	rectangle_map(char **map, int x, size_t y)
 	while (map[i])
 	{
 		if (y != ft_strlen(map[i]))
-			print_error("Error, no rectangle!");
+			print_error("Error, It is not a rectangle");
 		i++;
 	}
 	if (i != x)
