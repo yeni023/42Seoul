@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:58:55 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/21 16:58:57 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:03:09 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_error(char *msg)
 {
-	printf("Error\n%s", msg);
+	printf("%s", msg);
 	exit(1);
 }
 

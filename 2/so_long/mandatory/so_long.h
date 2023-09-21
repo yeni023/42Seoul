@@ -6,29 +6,19 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 20:12:18 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/21 16:59:04 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:22:47 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <unistd.h>
-
-#include "../libft/libft.h"
-#include "../libgnl/get_next_line.h"
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-# endif
-
-# define X_EVENT_KEY_PRESS 2
-# define X_EVENT_KEY_RELEASE 3
-# define X_EVENT_KEY_EXIT 17
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include "../libft/libft.h"
+# include "../libgnl/get_next_line.h"
 
 # define KEY_ESC 53
 # define KEY_W 13
@@ -68,13 +58,13 @@ typedef struct s_arg
 }	t_arg;
 
 // key_func.c
-int	exit_game(t_game *game);
-int	key_pressed_w(t_game *game, t_map *info);
-int	key_pressed_s(t_game *game, t_map *info);
-int	key_pressed_a(t_game *game, t_map *info);
-int	key_pressed_d(t_game *game, t_map *info);
+int		exit_game(t_game *game);
+int		key_pressed_w(t_game *game, t_map *info);
+int		key_pressed_s(t_game *game, t_map *info);
+int		key_pressed_a(t_game *game, t_map *info);
+int		key_pressed_d(t_game *game, t_map *info);
 
-// make_display.c
+// make_window.c
 int		key_pressed(int command, t_game *game);
 void	alloc_image(t_game	*game);
 void	print_map(t_game *game, char **map);
@@ -89,11 +79,11 @@ int		is_check_d_key(char **map, t_map *info, t_game *game);
 void	free_all_components(t_game *game);
 
 // check_path.c
+int		dfs(int x, int y, char **map, char find_words);
+int		valid_road(t_map info, t_arg arg, int x, int y);
 char	**allfree(char **res);
 char	**multidup(char **s, int x);
-int		check_dfs(int x, int y, char **map, char find_char);
 void	exit_to_wall(char **s);
-int		valid_road(t_map info, t_arg arg, int x, int y);
 
 // check_map.c
 void	find_x_y(t_map *info);
@@ -103,14 +93,14 @@ void	rectangle_map(char **map, int x, size_t y);
 void	no_other_arg(char **map);
 
 // main.c
-void	print_error(char *message);
-void	parse_map(char *filename, t_map	*info);
-char	*free_join(char	*s1, char *s2);
 int		valid_map(t_map *info);
 int		main(int argc, char **argv);
+void	print_error(char *message);
+void	parsing_map(char *filename, t_map	*info);
+char	*free_join(char	*s1, char *s2);
 
 // print_errors.c
-void	print_error(char *msg);
 int		print_error_ver2(char *message);
+void	print_error(char *msg);
 
 #endif

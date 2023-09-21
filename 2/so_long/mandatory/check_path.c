@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:17:45 by donghyk2          #+#    #+#             */
-/*   Updated: 2023/09/21 16:54:57 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:21:42 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**multidup(char **s, int x)
 	return (res);
 }
 
-int	check_dfs(int x, int y, char **map, char find_char)
+int	dfs(int x, int y, char **map, char find_words)
 {
 	int	cnt;
 
@@ -50,13 +50,13 @@ int	check_dfs(int x, int y, char **map, char find_char)
 	if (map[x][y] != 'V')
 	{
 		cnt = 0;
-		if (map[x][y] == find_char)
+		if (map[x][y] == find_words)
 			cnt++;
 		map[x][y] = 'V';
-		cnt += check_dfs(x - 1, y, map, find_char);
-		cnt += check_dfs(x, y + 1, map, find_char);
-		cnt += check_dfs(x + 1, y, map, find_char);
-		cnt += check_dfs(x, y - 1, map, find_char);
+		cnt += dfs(x - 1, y, map, find_words);
+		cnt += dfs(x, y + 1, map, find_words);
+		cnt += dfs(x + 1, y, map, find_words);
+		cnt += dfs(x, y - 1, map, find_words);
 		return (cnt);
 	}
 	return (0);
@@ -94,8 +94,8 @@ int	valid_road(t_map info, t_arg arg, int x, int y)
 		y = upgrade_ft_strchr(info.map[x], 'P');
 		if (y != -1)
 		{
-			if (arg.exit == check_dfs(x, y, visited_exit, 'E')
-				&& arg.food == check_dfs(x, y, visited_food, 'C'))
+			if (arg.exit == dfs(x, y, visited_exit, 'E')
+				&& arg.food == dfs(x, y, visited_food, 'C'))
 			{
 				allfree(visited_exit);
 				allfree(visited_food);

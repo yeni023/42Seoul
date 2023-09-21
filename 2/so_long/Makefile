@@ -16,7 +16,7 @@ SRCS = ./mandatory/check_map.c \
 		./mandatory/moving_key.c \
 		./mandatory/key_func.c \
 		./mandatory/print_errors.c \
-		./mandatory/make_display.c
+		./mandatory/make_window.c
 
 OBJS = $(SRCS:.c=.o)
 

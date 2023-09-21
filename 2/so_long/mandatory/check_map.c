@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:35:25 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/21 16:40:41 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:03:53 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	surrounded_wall(t_map info)
 		while (info.map[i][j])
 		{
 			if ((i == 0 || i == info.x - 1) && info.map[i][j] != '1')
-				print_error("error, Not surrounded by walls");
+				print_error("Error, Not surrounded by walls");
 			if ((j == 0 || j == info.y - 1) && info.map[i][j] != '1')
-				print_error("error, Not surrounded by walls");
+				print_error("Error, Not surrounded by walls");
 			j++;
 		}
 		i++;
@@ -75,7 +75,7 @@ void	valid_obj(char **map, t_arg *arg, t_map *info)
 	}
 	if (arg->exit == 1 && arg->food >= 1 && arg->peng == 1)
 		return ;
-	print_error("error, invalid argument!");
+	print_error("Error, invalid argument!");
 }
 
 void	rectangle_map(char **map, int x, size_t y)
@@ -86,11 +86,11 @@ void	rectangle_map(char **map, int x, size_t y)
 	while (map[i])
 	{
 		if (y != ft_strlen(map[i]))
-			print_error("error, no rectangle!");
+			print_error("Error, no rectangle!");
 		i++;
 	}
 	if (i != x)
-		print_error("error, no rectangle!");
+		print_error("Error, no rectangle!");
 }
 
 void	no_other_arg(char **map)
@@ -107,7 +107,7 @@ void	no_other_arg(char **map)
 			if (map[i][j] != '0' && map[i][j] != '1' &&
 				map[i][j] != 'C' && map[i][j] != 'E' &&
 				map[i][j] != 'P')
-				print_error("error, other arg!");
+				print_error("Error, other arg!");
 			j++;
 		}
 		i++;
