@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:17:45 by donghyk2          #+#    #+#             */
-/*   Updated: 2023/09/21 17:21:42 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:49:41 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,5 @@ int	valid_road(t_map info, t_arg arg, int x, int y)
 	}
 	allfree(visited_exit);
 	allfree(visited_food);
-	return (print_error_ver2("invalid path!"));
+	return (print_error("invalid path!"));
 }

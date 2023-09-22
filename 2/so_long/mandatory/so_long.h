@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 20:12:18 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/21 17:22:47 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:52:06 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,10 @@ void	no_other_arg(char **map);
 // main.c
 int		valid_map(t_map *info);
 int		main(int argc, char **argv);
-void	print_error(char *message);
 void	parsing_map(char *filename, t_map	*info);
 char	*free_join(char	*s1, char *s2);
 
 // print_errors.c
-int		print_error_ver2(char *message);
-void	print_error(char *msg);
+int		print_error(char *message);
 
 #endif

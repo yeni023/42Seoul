@@ -6,19 +6,13 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:58:55 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/21 17:03:09 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:05:13 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_error(char *msg)
-{
-	printf("%s", msg);
-	exit(1);
-}
-
-int	print_error_ver2(char *message)
+int	print_error(char *message)
 {
 	ft_putstr_fd("Error\n", 2);
 	perror(message);
