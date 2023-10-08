@@ -6,12 +6,13 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:38:55 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/09/18 20:42:28 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:33:25 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// 찾을 대상 : s, 찾을 문자 : c
 int	upgrade_ft_strchr(const char *s, int c)
 {
 	int	i;
