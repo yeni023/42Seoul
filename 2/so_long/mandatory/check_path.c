@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:17:45 by donghyk2          #+#    #+#             */
-/*   Updated: 2023/10/08 19:39:46 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/10/08 22:14:57 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	valid_road(t_map info, t_arg arg, int x, int y)
 		if (y != -1)
 		{
 			// 찾은 개수가 같은 경우에 arg.food 값 반환
+			// dfs로 돌아다니면서 확인한 갯수와 처음에 체크한 갯수가 동일한지 확인
 			if (arg.exit == dfs(x, y, visited_exit, 'E')
 				&& arg.food == dfs(x, y, visited_food, 'C'))
 			{
