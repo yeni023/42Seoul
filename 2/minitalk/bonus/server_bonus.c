@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeeunpar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:44:11 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/10/09 14:49:52 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:43:08 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
+// signal --> 시그널 핸들러를 호출할 시그널
+// info --> 시그널이 발생한 원인을 담은 siginfo_t 구조체 포인터
 void	check_handler(int signal, siginfo_t *info, void *s)
 {
 	static int	bit;
@@ -21,7 +23,7 @@ void	check_handler(int signal, siginfo_t *info, void *s)
 	if (signal == SIGUSR1)
 		temp |= (1 << bit);
 	bit++;
-	if (bit == 16)
+	if (bit == 8)
 	{
 		if (temp)
 			ft_putchar_fd(temp, 1);
@@ -51,7 +53,9 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	ft_memset(&sig, 0, sizeof(sig));
+	// 시그널 핸들러를 지정할 때 sa_siigaction을 사용
 	sig.sa_sigaction = &check_handler;
+	// getpid --> 현재 프로세스의 아이디를 리턴, 무조건 성공하기 때문에 실패한 경우에 반환 값은 없음
 	print_pid(getpid());
 	sigaction(SIGUSR1, &sig, 0);
 	sigaction(SIGUSR2, &sig, 0);

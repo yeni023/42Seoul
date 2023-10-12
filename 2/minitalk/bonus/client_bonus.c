@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeeunpar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:35:59 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/10/09 14:44:00 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:42:29 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	send_bit(pid_t pid, char input)
 	int	bit;
 
 	bit = 0;
-	while (bit < 16)
+	while (bit < 8)
 	{
 		if ((input & 1 << bit) != 0)
 			kill(pid, SIGUSR1);
