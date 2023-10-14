@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:44:11 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/10/12 15:43:08 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:38:50 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Input Format : ./server\n", 1);
 		return (0);
 	}
+	// sig 구조체를 초기화해서 모든 값을 0으로 설정
 	ft_memset(&sig, 0, sizeof(sig));
-	// 시그널 핸들러를 지정할 때 sa_siigaction을 사용
+	// 시그널 핸들러를 지정할 때 sa_sigaction을 사용
 	sig.sa_sigaction = &check_handler;
 	// getpid --> 현재 프로세스의 아이디를 리턴, 무조건 성공하기 때문에 실패한 경우에 반환 값은 없음
 	print_pid(getpid());
+	// SIGUSR1 을 처리하기 위한 sig 구조체 등록
+	// SIGUSR1 발생하면 check_handler 호출
 	sigaction(SIGUSR1, &sig, 0);
 	sigaction(SIGUSR2, &sig, 0);
 	while (1)
