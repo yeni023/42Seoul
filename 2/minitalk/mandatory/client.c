@@ -6,7 +6,7 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:20:48 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/10/12 17:16:34 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:41:52 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	send_bit(pid_t pid, char input)
 	{
 		// 가장 오른쪽 비트부터 왼쪽으로 가면서 전송
 		// 1을 bit만큼 left shift 연산한 값을 input과 &연산
+		// 현재 비트가 1인지 확인
 		if ((input & 1 << bit) != 0)
 		// 해당 값이 1일 경우 SIGUSR1 신호 전송
 			kill(pid, SIGUSR1);
@@ -34,6 +35,7 @@ void	send_bit(pid_t pid, char input)
 		// 해당 값이 0일 경우 SIGUSR2 신호 전송
 			kill(pid, SIGUSR2);
 		// 마이크로초만큼 스레드를 일시정지
+		// 서버에서 signal 함수로 받는 속도가 느려서 딜레이 필요
 		usleep(150);
 		bit++;
 	}

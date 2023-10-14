@@ -6,26 +6,29 @@
 /*   By: yeeunpar <yeeunpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:28:35 by yeeunpar          #+#    #+#             */
-/*   Updated: 2023/10/12 15:41:40 by yeeunpar         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:40:15 by yeeunpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+// 클라이언트가 반복적으로 보내는 시그널을 해독하기 위한 함수
+// 시그널이 발생할 때마다 호출
 void	check_handler(int signal)
 {
-	static int	bit; // 비트를 얼마나 받았는지 확인하는 정적 변수
-	static char	temp; // 문자값을 저장하는 정적 변수
+	static int	bit; // 현재 비트 위치를 나타냄 (0~7)
+	static char	temp; // 현재 수신된 문자 저장
 	// USR2 일 때는 어차피 0 이므로 PASS
 	if (signal == SIGUSR1)
-		// |= --> or 연산 수행
-		// 가장 오른쪽 비트부터 추가
+		// 1을 해당 비트만큼 shift left 연산 -> or 연산
 		temp |= (1 << bit);
+	// SIGSUR2라면 pass해서 자동으로 0을 or 연산하는 것과 같음
 	bit++;
 	// 8bit 만큼의 시그널을 받았다면 해당 문자 값을 저장하기 위한 변수도 정적으로 선언
 	if (bit == 8)
 	{
 		ft_putchar_fd(temp, 1);
+		// 다 채워졌으니까 초기화
 		bit = 0;
 		temp = 0;
 	}
