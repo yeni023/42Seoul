@@ -1,6 +1,0 @@
-*.o
-cub3D
-*/*.o
-*/*.a
-.vscode
-.DS_Store
