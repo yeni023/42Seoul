@@ -1,6 +1,6 @@
-NAME		= Brain
+NAME		= harlFilter
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
-SRC			= main.cpp
+SRC			= main.cpp Harl.cpp
 
 OBJ = $(SRC:cpp=o)
 
@@ -22,7 +22,7 @@ CUSTOM = \033[38;5;135m
 $(NAME): $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(CYAN)╔══════════════════════════════════════════╗$(DEF_COLOR)"
-	@echo "$(CYAN)║      cpp_01 ex02 compile finished.       ║$(DEF_COLOR)"
+	@echo "$(CYAN)║      cpp_01 ex06 compile finished.       ║$(DEF_COLOR)"
 	@echo "$(CYAN)╚══════════════════════════════════════════╝$(DEF_COLOR)"
 
 %.o: %.cpp
@@ -31,14 +31,14 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
-	@echo "$(ORANGE)ex02 obj files has been deleted.$(DEF_COLOR)"
+	@echo "$(ORANGE)ex06 obj files has been deleted.$(DEF_COLOR)"
 
 fclean:
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
-	@echo "$(RED)ex02 archive files has been deleted.$(DEF_COLOR)"
+	@echo "$(RED)ex06 archive files has been deleted.$(DEF_COLOR)"
 
 re: fclean all
-	@echo "$(YELLOW)Cleaned and rebuilt ex02.$(DEF_COLOR)"
+	@echo "$(YELLOW)Cleaned and rebuilt ex06.$(DEF_COLOR)"
 
 .PHONY: all clean fclean re
