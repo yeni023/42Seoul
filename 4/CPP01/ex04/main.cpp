@@ -1,4 +1,3 @@
-// a 입력하고 개행 입력하면 개행으로 바꿔주는지 이 부분에 대한 처리 필요 -> getline() 함수 쓴 경우 처리 안 되는 경우 많음
 # include <iostream>
 # include <fstream>
 
