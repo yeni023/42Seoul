@@ -48,6 +48,8 @@ int main(void) {
 	t1.nowStatus();
 	std::cout << std::endl;
 	t2.nowStatus();
+	t1.whoAmI();
+	t4.whoAmI();
 	std::cout << std::endl;
 	return 0;
 }
