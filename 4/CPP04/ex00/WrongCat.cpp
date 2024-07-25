@@ -5,7 +5,7 @@ WrongCat::WrongCat() :WrongAnimal() {
 	std::cout << "Wrong Cat constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat& wrongCat){
+WrongCat::WrongCat(const WrongCat& wrongCat) : WrongAnimal(wrongCat) {
 	this->_type = wrongCat.getType();
 	std::cout << "WrongCat copy constructor called" << std::endl;
 }

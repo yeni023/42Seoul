@@ -5,7 +5,7 @@ Cat::Cat() : Animal() {
 	std::cout <<"Cat constructor called"<< std::endl;
 }
 
-Cat::Cat(const Cat& cat) {
+Cat::Cat(const Cat& cat) : Animal(cat) {
 	this->_type = cat.getType();
 	std::cout << "Cat copy constructor called" << std::endl;
 }
@@ -22,5 +22,5 @@ Cat::~Cat() {
 }
 
 void Cat::makeSound() const {
-	std::cout << "Cat say 'meow meow meow...'" << std::endl;
+	std::cout << "Cat say 'meow meow meow!!'" << std::endl;
 }

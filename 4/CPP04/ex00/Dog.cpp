@@ -5,7 +5,7 @@ Dog::Dog() : Animal() {
 	std::cout <<"Dog constructor called"<< std::endl;
 }
 
-Dog::Dog(const Dog& Dog) {
+Dog::Dog(const Dog& Dog) : Animal(Dog){
 	this->_type = Dog.getType();
 	std::cout << "Dog copy constructor called" << std::endl;
 }

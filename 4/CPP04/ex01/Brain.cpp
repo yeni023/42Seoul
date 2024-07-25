@@ -14,7 +14,7 @@ Brain::Brain(const std::string& set) {
 
 Brain::Brain(const Brain& Brain) {
 	std::cout << "Brain copy constructor called" << std::endl;
-	for(int i = 0; i<100; i++) {
+	for(int i = 0; i < 100; i++) {
 		this->ideas[i] = Brain.ideas[i];
 	}
 }
