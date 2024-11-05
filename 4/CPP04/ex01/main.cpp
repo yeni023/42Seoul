@@ -61,7 +61,7 @@ int main()
 	cat.printBrain();
 	cat.setBrain("Beta");
 	cat.printBrain();
-	// system("leaks a.out");
+	system("leaks a.out");
 
 	return 0;
 }

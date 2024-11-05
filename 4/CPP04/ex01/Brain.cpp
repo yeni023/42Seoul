@@ -7,7 +7,7 @@ Brain::Brain() {
 
 Brain::Brain(const std::string& set) {
 	std::cout << "Brain set constructor called" << std::endl;
-	for(int i = 0; i<100; i++) {
+	for(int i = 0; i < 100; i++) {
 		this->ideas[i] = set;
 	}
 }
@@ -22,7 +22,7 @@ Brain::Brain(const Brain& Brain) {
 Brain& Brain::operator=(const Brain& Brain) {
 	std::cout << "Brain Copy assignment operator called" << std::endl;
 	if (this != &Brain) {
-		for(int i = 0; i<100; i++) {
+		for(int i = 0; i < 100; i++) {
 			this->ideas[i] = Brain.ideas[i];
 		}
 	}
@@ -34,7 +34,7 @@ Brain::~Brain() {
 }
 
 void	Brain::BrainSet(const std::string& set) {
-	for(int i = 0; i<100; i++) {
+	for(int i = 0; i < 100; i++) {
 		this->ideas[i] = set;
 	}
 }

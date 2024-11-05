@@ -4,13 +4,13 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-// void test() {
-// 	system("leaks a.out");
-// }
+void test() {
+	system("leaks a.out");
+}
 
 int main()
 {
-	// atexit(test);
+	atexit(test);
 	{
 		const Animal *j = new Dog();
 		const Animal *i = new Cat();

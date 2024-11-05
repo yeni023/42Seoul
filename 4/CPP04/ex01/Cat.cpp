@@ -38,7 +38,7 @@ void Cat::makeSound() const {
 }
 
 void	Cat::printBrain() {
-	for(int i = 0; i<100; i++) {
+	for(int i = 0; i < 100; i++) {
 		this->brain->printIdea(i);
 	}
 }

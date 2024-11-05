@@ -10,8 +10,6 @@
 
 int main()
 {
-	// atexit(test);
-
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -46,6 +44,7 @@ int main()
 	wrongCat->makeSound();
 
 	std::cout << std::endl;
+	// atexit(test);
 
 	delete wrongMeta;
 	delete wrongAnimal;
