@@ -5,7 +5,7 @@
 # include <stack>
 # include <deque>
 
-// 기본 컨테이너: deque
+// deque (vector, list에 비해 양쪽 끝에서 삽입과 삭제가 빠르다 = push, pop의 역할)
 template <typename T, typename F = std::deque<T> >
 class MutantStack : public std::stack<T, F> {
 	public:
